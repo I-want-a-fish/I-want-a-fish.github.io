@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.20.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>我本来就是个鱼啊</title>
+
+  
+    <meta name="description" content="JS 中常用的数据类型 基本数据类型 数字number  常规数字和NaN 字符串string  所有用单引号、双引号、反引号（撇）包起来的都是字符串 布尔boolean  true&#x2F;false 空对象指针null 未定义undefined   引用数据类型 对象数据类型object {} 普通对象 [] 数组对象 正则对象 Math数学函数对象 日期对象 …   函数数据类型funct">
+<meta property="og:type" content="website">
+<meta property="og:title" content="我本来就是个鱼啊">
+<meta property="og:url" content="http://ifish.love/notes/front/js.html">
+<meta property="og:site_name" content="我本来就是个鱼啊">
+<meta property="og:description" content="JS 中常用的数据类型 基本数据类型 数字number  常规数字和NaN 字符串string  所有用单引号、双引号、反引号（撇）包起来的都是字符串 布尔boolean  true&#x2F;false 空对象指针null 未定义undefined   引用数据类型 对象数据类型object {} 普通对象 [] 数组对象 正则对象 Math数学函数对象 日期对象 …   函数数据类型funct">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-07T21:15:56.911Z">
+<meta property="article:modified_time" content="2024-01-07T21:15:56.911Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="http://p1.music.126.net/DSCEm8XgFVcEdT0S52w8tg==/19075427230673814.jpg?param=180y180">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+    <!--动态线条背景-->
+  <script type="text/javascript"
+    color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+  </script>
+  
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='page'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="http://p1.music.126.net/DSCEm8XgFVcEdT0S52w8tg==/19075427230673814.jpg?param=180y180" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">我本来就是个鱼啊</div><div class="sub cap">测试测试测试</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item" href="/">主页</a><a class="nav-item" href="/notes/">笔记</a><a class="nav-item" href="/wiki/">寻常</a><a class="nav-item" href="/about/">关于</a></nav>
+</header>
+
+
+<div class="widgets">
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">JS 中常用的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B"><span class="toc-text">number数字类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NaN"><span class="toc-text">NaN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isNaN"><span class="toc-text">isNaN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E5%80%BC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B"><span class="toc-text">把其他类型值转换为数字类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">string字符串数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E5%80%BC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">把其他类型值转换为字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boolean%E5%B8%83%E5%B0%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">boolean布尔数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%8A%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E5%80%BC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B"><span class="toc-text">把其他类型值转换为布尔类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null-undefined"><span class="toc-text">null &#x2F; undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#object%E5%AF%B9%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%99%AE%E9%80%9A%E5%AF%B9%E8%B1%A1"><span class="toc-text">object对象数据类型-普通对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B"><span class="toc-text">JS中的数据类型检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E4%B8%AD%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%AD%E5%8F%A5-%E5%88%A4%E6%96%AD%E3%80%81%E5%BE%AA%E7%8E%AF"><span class="toc-text">JS中的操作语句: 判断、循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-text">判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vs"><span class="toc-text">&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="toc-text">循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-function"><span class="toc-text">函数 function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0"><span class="toc-text">创建函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BE%93%E5%87%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">浏览器常用的输出方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text"></span></a></li></ol></div></div></widget>
+
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" placeholder="站内搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/I-want-a-fish" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://tksmly.top/img/github.svg"/></a><a class="social" href="https://music.163.com/#/user/home?id=63344417" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://n.sinaimg.cn/sinakd20210724s/480/w640h640/20210724/0666-6f0b74a0cf37155a4e0a6ba05f6877e1.jpg"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+  
+
+<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="http://p1.music.126.net/DSCEm8XgFVcEdT0S52w8tg==/19075427230673814.jpg?param=180y180" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">我本来就是个鱼啊</div><div class="sub cap">测试测试测试</div></a></div></header>
+
+
+
+      
+
+
+
+<article class="md-text content page"><h3 id="JS-中常用的数据类型"><a href="#JS-中常用的数据类型" class="headerlink" title="JS 中常用的数据类型"></a>JS 中常用的数据类型</h3><ul>
+<li>基本数据类型<ul>
+<li>数字number<br>  常规数字和NaN</li>
+<li>字符串string<br>  所有用单引号、双引号、反引号（撇）包起来的都是字符串</li>
+<li>布尔boolean<br>  true&#x2F;false</li>
+<li>空对象指针null</li>
+<li>未定义undefined</li>
+</ul>
+</li>
+<li>引用数据类型<ul>
+<li>对象数据类型object<ul>
+<li>{} 普通对象</li>
+<li>[] 数组对象</li>
+<li>正则对象</li>
+<li>Math数学函数对象</li>
+<li>日期对象</li>
+<li>…</li>
+</ul>
+</li>
+<li>函数数据类型function</li>
+</ul>
+</li>
+</ul>
+<h3 id="number数字类型"><a href="#number数字类型" class="headerlink" title="number数字类型"></a>number数字类型</h3><blockquote>
+<p>包含：常规数字、NaN</p>
+</blockquote>
+<h3 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h3><blockquote>
+<p>not a number: 不是一个数，但它属于数字类型 </p>
+</blockquote>
+<p>NaN和任何值（包括自己）都不相等：NaN !&#x3D; NaN，所以我们不能用相等的方式判断是否为有效数字</p>
+<h3 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN"></a>isNaN</h3><blockquote>
+<p>检测一个值是否为有效数字，如果不是有效数字返回TRUE,反之是有效数字返回FALSE<br>console.log(isNaN(10))  &#x2F;&#x2F;false</p>
+</blockquote>
+<p>console.log(isNaN(‘AA’))  &#x2F;&#x2F;true<br>Number(‘AA’) &#x3D;&gt; NaN<br>isNaN(NaN) &#x3D;&gt; true </p>
+<p>console.log(isNaN(‘10’))  &#x2F;&#x2F;false<br>Number(‘10’) &#x3D;&gt; 10<br>isNaN(10) &#x3D;&gt; true </p>
+<p>在使用isNaN进行检测的时候，首先会验证检测的值是否为数字类型，，如果不是，先基于Number()这个方法，把值转换为数字类型，然后再检测</p>
+<h3 id="把其他类型值转换为数字类型"><a href="#把其他类型值转换为数字类型" class="headerlink" title="把其他类型值转换为数字类型"></a>把其他类型值转换为数字类型</h3><ul>
+<li><p>Number([val])<br>  把字符串转换为数字，只要字符串中包含任意一个非有效数字字符（第一个点除外）结果都是NaN，空字符串会变为数字零<br>  console.log(Number(‘12.5’))  &#x2F;&#x2F;12.5<br>  console.log(Number(‘12.5px’))  &#x2F;&#x2F;NaN<br>  console.log(Number(‘12.5.5’))  &#x2F;&#x2F;NaN<br>  console.log(Number(‘’))  &#x2F;&#x2F;0</p>
+<p>  布尔转换为数字<br>  console.log(Number(true))  &#x2F;&#x2F;1<br>  console.log(Number(false))  &#x2F;&#x2F;0<br>  console.log(isNaN(false))  &#x2F;&#x2F;false   </p>
+<p>  null,undefined转换为数字<br>  console.log(Number(null))  &#x2F;&#x2F;0<br>  console.log(Number(undefined))  &#x2F;&#x2F;NaN   </p>
+<p>  把引用数据类型转换为数字，是先把他基于toString方法转换为字符串，然后再转换为数字<br>  console.log(Number({name:’10’}))  &#x2F;&#x2F;NaN<br>  console.log(Number({}))  &#x2F;&#x2F;NaN<br>  &#x2F;&#x2F; {}&#x2F;{xxx:’xxx’}.toString() &#x3D;&gt; “[object Object]” &#x3D;&gt; NaN<br>  console.log(Number([]))  &#x2F;&#x2F;0<br>  &#x2F;&#x2F; [].toString() &#x3D;&gt; ‘’<br>  console.log(Number([12]))  &#x2F;&#x2F;12<br>  &#x2F;&#x2F; [12].toString() &#x3D;&gt; ‘12’<br>  console.log(Number([12,23]))  &#x2F;&#x2F;NaN<br>  &#x2F;&#x2F; [12,23].toString() &#x3D;&gt; ‘12,23’</p>
+</li>
+<li><p>parseInt&#x2F;parseFloat([val],[进制]): 也是转换为数字的方法，遂于字符串来说，它是从左到右依次查找有效数字字符，直到遇到非有效数字字符，停止查找（不管后面是否还有数字，都不在找了），把找到的当作数字返回</p>
+<p>   let str &#x3D; ‘12.5px’;<br>   console.log(Number(str))  &#x2F;&#x2F;NaN<br>   console.log(parseInt(str))  &#x2F;&#x2F;12<br>   console.log(parseFloat(str))  &#x2F;&#x2F;12.5<br>   console.log(parseFloat(‘width:12.5px’))  &#x2F;&#x2F;NaN</p>
+</li>
+<li><p>&#x3D;&#x3D; 进行比较的时候，可能要出现把其他类型值转换为数字</p>
+</li>
+</ul>
+<h3 id="string字符串数据类型"><a href="#string字符串数据类型" class="headerlink" title="string字符串数据类型"></a>string字符串数据类型</h3><blockquote>
+<p>所有用单引号、双引号、反引号（撇 ES6模板字符串）包起来的都是字符串</p>
+</blockquote>
+<h3 id="把其他类型值转换为字符串"><a href="#把其他类型值转换为字符串" class="headerlink" title="把其他类型值转换为字符串"></a>把其他类型值转换为字符串</h3><ul>
+<li>[val].toString()<br>  &#x2F;&#x2F;null和undefined是禁止直接toString的<br>  &#x2F;&#x2F;(null).toString() &#x2F;&#x2F; &#x3D;&gt;报错<br>  &#x2F;&#x2F;但是和undefined一样转换为字符串的结果就是’null’&#x2F;‘undefined’<br><br>  &#x2F;&#x2F;普通对象.toString()的结果是”[object Object]” &#x3D;&gt; Object.prototype.toString方法不是转换为字符串的，而是用来监测数据类型的</li>
+<li>字符串拼接<br>  &#x2F;&#x2F;四则运算法则中，除加法之外，其余都是数学计算，只有加法可能存在字符串拼接（一旦遇到字符串，则不是数学运算，而是字符串拼接）<br>   console.log(‘10’+10)  &#x2F;&#x2F;  &#x3D;&gt; ‘1010’<br>   console.log(‘10’-10)  &#x2F;&#x2F;  &#x3D;&gt; 0<br>   console.log(‘10px’-10)  &#x2F;&#x2F; &#x3D;&gt; NaN</li>
+</ul>
+<h3 id="boolean布尔数据类型"><a href="#boolean布尔数据类型" class="headerlink" title="boolean布尔数据类型"></a>boolean布尔数据类型</h3><blockquote>
+<p>只有两个值 true&#x2F;false</p>
+</blockquote>
+<h3 id="把其他类型值转换为布尔类型"><a href="#把其他类型值转换为布尔类型" class="headerlink" title="把其他类型值转换为布尔类型"></a>把其他类型值转换为布尔类型</h3><blockquote>
+<p>只有 0、NaN、’’、null、undefined 五个值转换为false，其余转换结果都是true(而且没有任何特殊情况)</p>
+</blockquote>
+<ul>
+<li>Boolean([val])</li>
+<li>!&#x2F;!!           &#x2F;&#x2F;!:取反(先转为布尔，然后取反)        !!:取反再取反，只相当于转换为布尔&lt;&#x3D;&gt; Boolean<br>   console.log(!1)  &#x2F;&#x2F;  &#x3D;&gt; false<br>   console.log(!!,)  &#x2F;&#x2F;  &#x3D;&gt; true </li>
+<li>条件判断</li>
+</ul>
+<h3 id="null-undefined"><a href="#null-undefined" class="headerlink" title="null &#x2F; undefined"></a>null &#x2F; undefined</h3><blockquote>
+<p>null和undefined都代表的是没有</p>
+</blockquote>
+<ul>
+<li><p>null: 意料之中(一般都是开始不知道值，我们手动设置为null，后期再给予赋值操作)</p>
+<p>  let num &#x3D; null; &#x2F;&#x2F; &#x3D;&gt; let num &#x3D; 0; 一般最好用null作为初始的空值，因为零不是空值，他在栈内存中有自己的存储空间（占了位置），因此null会更节约性能</p>
+</li>
+<li><p>undefined： 意料之外(不是我能决定的)</p>
+<p>  let num; &#x2F;&#x2F;&#x3D;&gt; 创建一个变量没有赋值，默认值是undefined</p>
+</li>
+</ul>
+<h3 id="object对象数据类型-普通对象"><a href="#object对象数据类型-普通对象" class="headerlink" title="object对象数据类型-普通对象"></a>object对象数据类型-普通对象</h3><blockquote>
+<p>{[key]:[value],…} 任何一个对象都是由零到多组键值对(属性名：属性值)组成的(并且属性名不能重复)<br>    &#x2F;&#x2F;获取属性名对应的属性值<br>    &#x2F;&#x2F; &#x3D;&gt; 对象.属性名<br>    &#x2F;&#x2F; &#x3D;&gt; 对象[属性名] 属性名是数字或者字符串格式的<br>    &#x2F;&#x2F; &#x3D;&gt; 如果当前属性名不存在，默认的属性值是undefined<br>    &#x2F;&#x2F; &#x3D;&gt; 如果属性名是数字，则不能使用点的方式获取属性值</p>
+</blockquote>
+<pre><code>// 删除属性
+=&gt;真删除：把属性彻底干掉
+delete 对象[&#39;属性名&#39;]
+=&gt;假删除：属性还在，值为空
+属性名.属性值 = null/undefined
+</code></pre>
+<blockquote>
+<p>数组是特殊的对象数据类型<br>    1.我们中括号中设置的是属性值，它的属性名是默认生成的数字，从零开始递增，而且这个数字代表每一项的位置，我们把其称为’索引’ &#x3D;&gt; 从零开始，连续递增，代表每一项位置的数字属性名<br>    2.天生一个属性名length，存储数组的长度</p>
+</blockquote>
+<h3 id="JS中的数据类型检测"><a href="#JS中的数据类型检测" class="headerlink" title="JS中的数据类型检测"></a>JS中的数据类型检测</h3><ul>
+<li>typeof[val]: 用来检测数据类型的运算符</li>
+<li>instanceof：  用来检测当前实例是否属于某个类</li>
+<li>constructor： 基于构造函数检测数据类型(也是基于类的方式)</li>
+<li>Object.prototype.toString.call(): 检测数据类型最好的办法</li>
+</ul>
+<blockquote>
+<p>  基于typeof检测出来的结果<br>        1.首先是一个字符串<br>        2.字符串中包含对应的类型<br>    局限性<br>        1.typeof null &#x3D;&gt; ‘object’ 但是null不是对象<br>        2.基于typeof无法细分出当前值是普通对象还是数组对象等，因为只要是对象数据类型，返回的结果都是’object’</p>
+</blockquote>
+<h3 id="JS中的操作语句-判断、循环"><a href="#JS中的操作语句-判断、循环" class="headerlink" title="JS中的操作语句: 判断、循环"></a>JS中的操作语句: 判断、循环</h3><h4 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h4><blockquote>
+<p>条件成立做什么？不成立做什么？</p>
+</blockquote>
+<ul>
+<li>if&#x2F;else if&#x2F;else</li>
+<li>三元运算符</li>
+<li>switch case</li>
+</ul>
+<p>1.if&#x2F;else<br>    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(条件)&#123;</span><br><span class="line">    条件成立执行</span><br><span class="line">&#125;else if(条件2)&#123;</span><br><span class="line">    条件2成立执行</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    以上条件都不成立执行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.三元运算符：简单if&#x2F;else的特殊处理方式<br>    条件?条件成立处理的事情：不成立处理的事情；<br>    1.如果处理的事情比较多，我们用括号抱起来，没一件事情用都好分隔<br>    2.如果不需要处理事情，可以使用null&#x2F;undefined占位</p>
+<p>3.switch case<br>    一个变量在不同值情况下的不同操作<br>    1.每一种case情况结束后最好都加上break，不加break，当前条件执行完成后，后面条件不论是都成立都要执行，直到遇到break为止<br>    2.default等价于else，以上都不成立干的事情<br>    3.每一种case情况的比较用的都是&#x3D;&#x3D;&#x3D;“绝对相等”</p>
+<h4 id="vs"><a href="#vs" class="headerlink" title="&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;</h4><p>&#x3D;&#x3D;：相等(如果左右两边数据值类型不同，是默认先转换为相同的类型，然后比较)<br>&#x3D;&#x3D;&#x3D;：绝对相等(如果类型不一样，肯定不相等，不会默认转换数据类型)</p>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><blockquote>
+<p>重复做某些事情就是循环</p>
+</blockquote>
+<ul>
+<li>for循环</li>
+<li>for in循环</li>
+<li>for of循环(ES6新增)</li>
+<li>while循环</li>
+<li>do while循环</li>
+</ul>
+<h3 id="函数-function"><a href="#函数-function" class="headerlink" title="函数 function"></a>函数 function</h3><blockquote>
+<p>函数就是一个方法或者一个功能体，函数就是把实现某个功能的代码放到一起进行封装，以后想要操作实现这个功能，只需要把函数执行即可 &#x3D;&gt; ‘封装’：减少页面中的冗余代码，提高代码重复使用率(低耦合高内聚)</p>
+</blockquote>
+<ul>
+<li>创建函数<ul>
+<li>形参</li>
+<li>返回值</li>
+</ul>
+</li>
+<li>执行函数<ul>
+<li>实参</li>
+</ul>
+</li>
+<li>arguments</li>
+<li>函数的底层运行机制</li>
+</ul>
+<h3 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function [函数名]([形参变量1]，...)&#123;</span><br><span class="line">    函数体：基于JS完成需要实现的功能</span><br><span class="line">    return[处理后的结果];</span><br><span class="line">&#125;</span><br><span class="line">[函数名]([实参1]，...)</span><br></pre></td></tr></table></figure>
+
+
+<p>&#x2F;&#x2F;形参：<br>&#x2F;&#x2F;创建函数的时候我们设置了形参变量，但如果执行的时候并没有给传递对应的实参值，那么形参变量默认的值是：undefined，此时若遇到计算，则会出现转换为NaN，因此一般形参会提供默认值</p>
+<p>&#x2F;&#x2F;函数中的返回值：<br>&#x2F;&#x2F;函数执行的时候，函数体内部创建的变量我们是无法获取和操作的，如果要想获取内部的信息，我们需要基于return返回值机制，把信息返回才可以，没有写return，函数默认返回值是undefined </p>
+<p>&#x2F;&#x2F;匿名函数：<br>&#x2F;&#x2F;匿名函数之函数表达式:把一个匿名函数本身作为值赋值给其它东西，这种函数一般不是手动触发执行，而且靠其它程序驱动触发执行(例如:触发某个事件的时候把它执行等)<br>document.body.onclick &#x3D; function () {}|<br>setTimeout(ffunction(){},1000)<br>(function(n){})(100);  &#x2F;&#x2F;匿名函数之自执行函数：创建完一个匿名函数，紧接着就把当前函数加小括号执行</p>
+<h3 id="浏览器常用的输出方式"><a href="#浏览器常用的输出方式" class="headerlink" title="浏览器常用的输出方式"></a>浏览器常用的输出方式</h3><p>1.console.log&#x2F;dir&#x2F;table…在控制台输出<br>        .dir : 输出一个对象的详细的键值对信息<br>        .table : 把一个多维json数组在控制台按照表格的方式呈现出来</p>
+<p>2.浏览器窗口弹窗 alert&#x2F;confirm&#x2F;prompt<br>        &#x3D;&gt; 三种方式输出的结果就都必先经过toString转换为字符串<br>        &#x3D;&gt; 三种方式会阻断JS代码执行，只有当窗口关掉，JS才会继续执行</p>
+<p>3.document.write在页面中写入信息<br>        &#x3D;&gt; 先经过toString转换为字符串</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3></article>
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      快来参与讨论吧
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="https://github.com/I-want-a-fish/I-want-a-fish.github.io" data-repo-id="R_kgDOK5_fMA" data-category="General" data-category-id="DIC_kwDOK5_fMM4CbyfM" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@anonymity</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<center>
+</br>
+</br>
+<!--不蒜子计数器-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--添加一个访问量-->
+<span>
+                本"<span style="color: rgb(13, 109, 252); font-weight: bold;">页面</ a></span>"访问 <span id="busuanzi_value_page_pv" style="color: rgb(13, 109, 252); font-weight: bold;"></span> 次 | 👀总访问 <span id="busuanzi_value_site_pv" style="color: rgb(13, 109, 252); font-weight: bold;"></span>                次 | 🥷总访客 <span id="busuanzi_value_site_uv" style="color: rgb(13, 109, 252); font-weight: bold;"></span> 人
+            </span>
+</br>
+</br>
+<script type="text/javascript">
+function show_runtime() {
+    window.setTimeout("show_runtime()", 1000);
+    X = new Date("12/15/2023 00:00:00");
+    Y = new Date();
+    T = (Y.getTime() - X.getTime());
+    M = 24 * 60 * 60 * 1000;
+    a = T / M;
+    A = Math.floor(a);
+    b = (a - A) * 24;
+    B = Math.floor(b);
+    c = (b - B) * 60;
+    C = Math.floor((b - B) * 60);
+    D = Math.floor((c - C) * 60);
+    runtime_span.innerHTML = "⏱️本站已运行 " + A + "天" + B + "小时" + C + "分" + D + "秒"
+}
+show_runtime();
+</script>
+<span id="runtime_span"></span>
+</center>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.20.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.20.0';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js","memos":"/js/plugins/memos.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.error(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
